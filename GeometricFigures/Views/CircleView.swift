@@ -43,65 +43,56 @@ struct CircleView: View {
                 Text("\(currentCircle.radius.formatted()) units")
                 Spacer()
             }
-                        
+            
             // Label (show the diameter)
-            VStack {
-                HStack {
-                    Text("Diameter")
-                        .font(.headline)
-                    Spacer()
-                }
-                .padding(.top)
-                .padding(.bottom, 5)
-
-                HStack {
-                    Text("\(currentCircle.diameter.formatted()) units")
-                    Spacer()
-                }
-                .padding(.bottom)
-            }
-
+            ExtractedView(
+                value: "Diameter",
+                label: "\(currentCircle.diameter.formatted()) units"
+            )
+            
             // Label (show the area)
-            VStack {
-                HStack {
-                    Text("Area")
-                        .font(.headline)
-                    Spacer()
-                }
-                .padding(.top)
-                .padding(.bottom, 5)
-
-                HStack {
-                    Text("\(currentCircle.area.formatted()) square units")
-                    Spacer()
-                }
-                .padding(.bottom)
-            }
-
+            ExtractedView(
+                value: "Area",
+                label: "\(currentCircle.area.formatted()) units"
+            )
+            
+            
             // Label (show the circumference)
-            VStack {
-                HStack {
-                    Text("Circumference")
-                        .font(.headline)
-                    Spacer()
-                }
-                .padding(.top)
-                .padding(.bottom, 5)
-
-                HStack {
-                    Text("\(currentCircle.circumference.formatted()) units")
-                    Spacer()
-                }
-                .padding(.bottom)
+            ExtractedView(
+                value: "Circumference",
+                label: "\(currentCircle.circumference.formatted()) units"
+            )
+            
+            
+            #Preview {
+                CircleView()
             }
             
-            Spacer()
-
+            struct ExtractedView: View {
+                
+                //Mark: Stored properties
+                let value: String
+                let label: String
+                
+                //Mark: Computed properties
+                var body: some View {
+                    VStack {
+                        HStack {
+                            Text("Diameter")
+                                .font(.headline)
+                            Spacer()
+                        }
+                        .padding(.top)
+                        .padding(.bottom, 5)
+                        
+                        HStack {
+                            Text(value)
+                            Spacer()
+                        }
+                        .padding(.bottom)
+                    }
+                }
+            }
         }
-        .padding()
     }
-}
-
-#Preview {
-    CircleView()
 }
